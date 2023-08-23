@@ -1,0 +1,18 @@
+The focus of this project was to create a type of analysis on a Yelp Dataset provided by the SQL for Data Science course from UC Davis's specilization on Data Science and create a correlation based on that analysis.
+   i. For this project, my analysis is going to focus on finding the cities with the best food spots on average.
+  ii. For my analysis, I will use the given cities in the Yelp data set and use SQL to create a table. This table will include metrics such as average star ratings, number of resturants, and the review counts. 
+This will enable me to display and analyze the cities with the highest averages of quality restaurants along with the number of restaurants which can display the diversity of cuisine in each city.
+Basic Code:
+     SELECT
+	    count(b.name) AS AMT_Of_Resturants,
+	    AVG(stars),
+      review_count,
+      b.city
+	    FROM 
+	    (business b INNER JOIN hours h on b.id = h.business_id)
+      GROUP BY b.city
+	    ORDER BY AVG(stars)
+	    LIMIT 10;
+
+ This created a list of cities in America with the highest average rating of restuarants which indicates quality of food. My code found that the cities of Gastonia in North Carolina, Sun City in Arizona, and Surprise in Arizona had the highest rating of an average of 5 stars with a lot of Arizona cities such 
+ as Tempe and Scottsdale making the top 10. If you are in the mood of trying some great food, Arizona should definetley be on your top places to visit.

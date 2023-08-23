@@ -1,0 +1,139 @@
+1. 
+    I used the SQL code:
+    SELECT 
+    COUNT(*)
+    FROM _____;
+
+I added each table to get the amount of records. All of them had 10,000 records.
+
+2. 
+    I.  Business: 10000
+      SELECT 
+		  COUNT (*)
+		  FROM
+		  (SELECT DISTINCT id FROM (business));
+	  II. Hours: 1562
+      SELECT
+      COUNT (*)
+      FROM
+      (SELECT DISTINCT business_id FROM (hours)); 
+	  III. Category: 2643
+      SELECT
+      COUNT (*)
+      FROM
+      (SELECT DISTINCT business_id FROM (category));
+    IV. Attribute: 1115
+          SELECT
+          COUNT (*)
+          FROM
+          (SELECT DISTINCT business_id FROM (attribute));
+      V.  Review: id (10,000), business_id (8,090), and user_id (9,581)
+          SELECT
+          COUNT (*)
+          FROM
+          (SELECT DISTINCT (id, business_id, or user_id) FROM (review));
+      VI. Checkin: 493
+        SELECT
+        COUNT (*)
+		    FROM
+		    (SELECT DISTINCT business_id FROM (checkin));
+	VII. Photo: id: 10,000 and business_id: 6493.
+        SELECT
+        COUNT (*)
+        FROM  
+        (SELECT DISTINCT (id, business_id) FROM (photo));
+	VIII. Tip: business_id: 3979 and user_id: 537.
+        SELECT
+        COUNT (*)
+        FROM
+        (SELECT DISTINCT (user_id, business_id) FROM (Tip));
+	IX.  User: id: 10,000.
+        SELECT 
+		    COUNT (*)
+		    FROM
+	    	(SELECT DISTINCT id FROM (user));
+	X.  Friend: 11.
+        SELECT 
+		    COUNT (*)
+		    FROM
+		    (SELECT DISTINCT user_id FROM (friend));
+	XI.  Elite_Years: 2780.
+        SELECT 
+		    COUNT (*)
+		    FROM
+		    (SELECT DISTINCT user_id FROM (elite_years));
+
+For the multiple foreign keys, I put both ones in parenthesis in this document but coded each seperatley.
+
+3. There is no column with null values in the user table
+     CODE: 
+     SELECT
+ 		 COUNT (column_name)
+		 FROM user
+		 WHERE column_name IS NULL;
+
+4. 
+    I. min:1, max: 5, and avg: 3.70.
+    II. min: 1, max: 5, and avg: 3.65.
+    III. min: 0, max: 2, and avg: .0144.
+    IV. min: 1, max: 53, and avg: 1.94
+    V. min: 0, max: 2000, and avg: 24.3
+
+    CODE:
+      SELECT
+      ___(column_name)
+      FROM table_name; 
+
+5.  
+  SELECT
+  city,
+  SUM (review_count) AS REV
+  FROM business
+  GROUP BY city
+  ORDER BY NUM DESC;
+
+6.
+        SELECT
+        SUM (review_count) AS AMT,
+        stars
+        FROM Business
+        WHERE city = 'Avon'
+        GROUP BY stars;
+
+         SELECT
+         SUM (review_count) AS AMT,
+         stars
+         FROM Business
+         WHERE city = 'Beachwood'
+         GROUP BY stars;
+
+7.  
+     SELECT
+     review_count,
+     name
+     FROM 
+     user
+     ORDER BY review_count DESC
+     LIMIT 3;
+
+8.  
+      From the results given, it does not seem that posting more reviews equals automatically more fans. The person (Harald) with the most reviews didn’t possess the highest number of fans, 
+      which belonged to the person with the 6th highest number of reviews (Gerald).
+
+9. 
+       There are more reviews with the word love than ones with the word hate.
+       SELECT
+       COUNT (*)
+       FROM review
+       WHERE TEXT LIKE '%___%';
+
+
+10.    
+        SELECT
+ 	      name,
+  	    fans
+        FROM user
+             ORDER BY fans DESC
+             LIMIT 10;
+
+

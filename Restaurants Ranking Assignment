@@ -1,0 +1,19 @@
+This project was based on picking a city and a category from our Yelp Data Set and group the businesses by their star category. We also compared businesses with 2-3 stars vs 4-5 stars as apart of our analysis.
+   i. SQL Code:
+      SELECT
+      business.name, 
+      business.city, 
+      category.category, 
+      business.stars,
+      hours.hours,
+      business.review_count,
+      business.address,
+      business.postal_code
+      FROM (business INNER JOIN category ON business.id = category.business_id) INNER JOIN hours ON hours.business_id =  business.id  
+      WHERE business.city = 'Phoenix' AND category.category = "Restaurants"
+      GROUP BY business.stars;
+  ii. I picked the city Phoenix and ended up using the category restaurants for this part of the project. McDonalds, which had 2.5 stars, opened the earliest at around 5:00 while
+      the restaurants with 3 stars or more opened later as the star rating ended up getting higher.
+  iii. Each restaurant had a different amount of reviews as McDonalds had 8 at about 2.5 stars while Bootleggers Modern American Smokehouse had about 431 reviews at 4 stars.
+       The rest varied and were all over the board
+  iv. They all were in different locations around Phoenix with different zip codes.
